@@ -7,7 +7,7 @@
 
 <body>
   <div id="calculator">
-    <b-container fluid>
+    <b-container fluid class="form">
       <b-row class="mb-4 mt-4">
         <b-col>
           <h2>RPE Training Calculator</h2></b-col>
@@ -16,28 +16,28 @@
       <b-row>
         <b-col> Target Reps</b-col>
         <b-col>
-          <input v-model="target_reps" type="range" min="0" max="10" step="1">
+          <input class="form-control" v-model="target_reps" type="range" min="0" max="10" step="1">
         </b-col>
         <b-col>{{ target_reps }}</b-col>
       </b-row>
       <b-row>
         <b-col>Target RPE</b-col>
         <b-col>
-          <input v-model="target_rpe" type="range" min="6" max="10" step="0.5">
+          <input class="form-control" v-model="target_rpe" type="range" min="6" max="10" step="0.5">
         </b-col>
         <b-col>{{ target_rpe }}</b-col>
       </b-row>
       <b-row>
         <b-col>Actual Reps</b-col>
         <b-col>
-          <input v-model="actual_reps" type="range" min="0" max="10" step="1">
+          <input class="form-control" v-model="actual_reps" type="range" min="0" max="10" step="1">
         </b-col>
         <b-col>{{ actual_reps }}</b-col>
       </b-row>
       <b-row>
         <b-col>Actual RPE</b-col>
         <b-col>
-          <input v-model="actual_rpe" type="range" min="6" max="10" step="0.5">
+          <input class="form-control" v-model="actual_rpe" type="range" min="6" max="10" step="0.5">
         </b-col>
         <b-col>{{ actual_rpe }}</b-col>
       </b-row>
