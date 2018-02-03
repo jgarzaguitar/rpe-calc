@@ -7,7 +7,8 @@ window.onload = function () {
       target_reps: 0,
       actual_rpe: 6,
       actual_reps: 0,
-      message: "",
+      message1: "",
+      message2: "",
       rpe_values: [6, 7, 8, 8.5, 9, 9.5, 10],
       selected_lift: '',
       lift_options: [
@@ -17,10 +18,10 @@ window.onload = function () {
         { text: 'Deadlift', value: 'Deadlift' }
       ],
       topset: '',
-      squat: .94,
-      press: .96,
-      bench: .96,
-      deadlift: .90,
+      squat: .06,
+      press: .04,
+      bench: .04,
+      deadlift: .1,
     },
     methods: {
       reset: function() {
@@ -30,8 +31,7 @@ window.onload = function () {
         this.actual_reps = 0
         this.message = ""
       },
-      calculateRPE: function() {
-        var current_lift = this.selected_lift
+      calcMistake: function() {
         var backoff_perc_diff = 0
         var backoff_sets_diff = 0
         var target_rpe = parseFloat(this.target_rpe)
@@ -40,29 +40,56 @@ window.onload = function () {
         var actual_reps = parseInt(this.actual_reps)
           //Success
         if (actual_rpe === target_rpe && actual_reps === target_reps) {
-          this.message = "Nice job! Move on to your backoff sets"
+          this.message1 = "Nice job! Move on to your backoff sets"
+          return backoff_perc_diff
         }
         // overshot
         else if (actual_rpe > target_rpe && actual_reps === target_reps) {
-          backoff_perc_diff = (this.rpe_values.indexOf(actual_rpe) - this.rpe_values.indexOf(target_rpe)) * 2
-          this.message = "You overshot your RPE. Take off " + backoff_perc_diff + "% from your backoffs."
+          backoff_perc_diff = (this.rpe_values.indexOf(actual_rpe) - this.rpe_values.indexOf(target_rpe)) * .02
+          backoff_perc_diff_msg = backoff_perc_diff * 100
+          this.message1 = "You overshot your RPE."
+          return backoff_perc_diff
         }
         // overshot and missed reps
         else if (actual_reps < target_reps) {
-          backoff_perc_diff = (this.rpe_values.indexOf(10) - this.rpe_values.indexOf(target_rpe)) * 2 + (target_reps - actual_reps) * 2
-          this.message = "You overshot to RPE 10 when you failed. Take off " + backoff_perc_diff + "% from your backoffs."
+          backoff_perc_diff = (this.rpe_values.indexOf(10) - this.rpe_values.indexOf(target_rpe)) * .02 + (target_reps - actual_reps) * .02
+          backoff_perc_diff_msg = backoff_perc_diff * 100
+          this.message1 = "You overshot to RPE 10 when you failed."
+          return backoff_perc_diff
         }
         // undershot
         else if (actual_rpe < target_rpe) {
           backoff_sets_diff = 1
-          this.message = "You undershot your RPE. Subtract " + backoff_sets_diff + " set from your backoffs and keep looking for your target RPE."
-        } else {
-          this.message = "What are you doing? Talk to Josh."
+          backoff_perc_diff_msg = backoff_perc_diff * 100
+          this.message1 = "You undershot your RPE."
+          return backoff_perc_diff
+        } 
+        else {
+          this.message1 = "What are you doing? Talk to Josh."
+        }
+      },
+      calcBackoff: function() {
+        modifier = this.calcMistake()
+
+        if (this.selected_lift === "Squat") {
+          backoff_perc = 1 - (this.squat + modifier)
+          backoff_perc_msg = backoff_perc * 100
+          this.message2 = "Your updated backoff percentage is " + backoff_perc_msg + "%. Take " + this.topset * backoff_perc + " for your backoffs."
+        }
+        else if (this.selected_lift === "Bench" | this.selected_lift === "Press") {
+          backoff_perc = 1 - (this.bench + modifier)
+          backoff_perc_msg = backoff_perc * 100
+          this.message2 = "Your updated backoff percentage is " + backoff_perc_msg + "%. Take " + this.topset * backoff_perc + " for your backoffs."
+        }
+        else if (this.selected_lift === "Deadlift") {
+          backoff_perc = 1 - (this.deadlift + modifier)
+          backoff_perc_msg = backoff_perc * 100
+          this.message2 = "Your updated backoff percentage is " + backoff_perc_msg + "%. Take " + this.topset * backoff_perc + " for your backoffs."
         }
       }
     },
     watch: {
-      selected_lift: 'calculateRPE'
+      selected_lift: 'calcBackoff'
     }
   });
 // set limits to backoff reduction
@@ -72,7 +99,14 @@ window.onload = function () {
 // print absolute weight change based on top set input
 // dump all data into local storage
 // when app loads, load local storage
+// fix rpe input to only show specific rpe values i want
+// on:change for lifts only works when it's changed. should be able to update when clicked again, 
+//    or re-render when any changes to inputs happen
 
+
+// refactor code
+// -calc_mistake handles edge cases  and returns backoff_perc_diff
+// -calc_backoff calls calc_mistake and adds it's returned value to the default lift based backoff
 
 
 }
