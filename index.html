@@ -38,6 +38,19 @@
       </b-row>
 
       <b-row>
+        <b-col>
+        <b-form-input 
+          v-model="topset"
+          type="text"
+          placeholder="Enter your topset.">
+        </b-form-input>
+        </b-col>
+        <b-col>
+          <b-button v-on:click="reset">Reset</b-button>
+        </b-col>
+      </b-row>
+
+      <b-row>
         <b-col class="col-8 upsize row justify-content-left">Target Reps :</b-col>
         <!-- <b-col class="col-3 upsize row justify-content-center">=</b-col> -->
         <b-col class="col-4 upsize row justify-content-left">{{ target_reps }}</b-col>
@@ -88,23 +101,17 @@
       <b-row>
         <b-form-radio-group id="lift-options"
           buttons
-          v-model="selected_lift"
+          v-model ="selected_lift"
           :options="lift_options"
-          name="lift-options" />
+          name="lift-options" 
+          v-on:change="calculateRPE" />
         </b-form-group>
       </b-row> 
 
      <!--  <datalist id="rpevalues">
         <option v-for="rpe in rpe_values" v-bind:value="rpe" v-bind:label="rpe"></option>
       </datalist> -->
-      <b-row class="mt-4">
-        <b-col>
-          <b-button v-on:click="calculateRPE">What next?</b-button>
-        </b-col>
-        <b-col>
-          <b-button v-on:click="reset">Reset</b-button>
-        </b-col>
-      </b-row>
+    
       <b-row class="mt-3">
         <b-col>
           <h4>{{message}}</h4></b-col>

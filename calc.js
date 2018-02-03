@@ -3,9 +3,9 @@ window.onload = function () {
   var rpe_calculator = new Vue({
     el: '#calculator',
     data: {
-      target_rpe: 0,
+      target_rpe: 6,
       target_reps: 0,
-      actual_rpe: 0,
+      actual_rpe: 6,
       actual_reps: 0,
       message: "",
       rpe_values: [6, 7, 8, 8.5, 9, 9.5, 10],
@@ -15,17 +15,23 @@ window.onload = function () {
         { text: 'Bench', value: 'Bench' },
         { text: 'Press', value: 'Press'},
         { text: 'Deadlift', value: 'Deadlift' }
-      ]
+      ],
+      topset: '',
+      squat: .94,
+      press: .96,
+      bench: .96,
+      deadlift: .90,
     },
     methods: {
       reset: function() {
-        this.target_rpe = 0
+        this.target_rpe = 6
         this.target_reps = 0
-        this.actual_rpe = 0
+        this.actual_rpe = 6
         this.actual_reps = 0
         this.message = ""
       },
       calculateRPE: function() {
+        var current_lift = this.selected_lift
         var backoff_perc_diff = 0
         var backoff_sets_diff = 0
         var target_rpe = parseFloat(this.target_rpe)
@@ -54,11 +60,19 @@ window.onload = function () {
           this.message = "What are you doing? Talk to Josh."
         }
       }
+    },
+    watch: {
+      selected_lift: 'calculateRPE'
     }
   });
 // set limits to backoff reduction
-// add buttons for which lift was done so absolute percentages can be applied
-// set whole numbers to end in .0 for rpe sliders
-// 
+// update percentages when lift is selected
+// display default backoff percentage somewhere
+// make default backoff percentage editable
+// print absolute weight change based on top set input
+// dump all data into local storage
+// when app loads, load local storage
+
+
 
 }
