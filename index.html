@@ -12,6 +12,9 @@
       margin-right: 0px;
       margin-left: 0px;
     }
+    [type='radio'] {
+      display: none; 
+    }
   </style>
 
 </head>
@@ -74,20 +77,12 @@
       </b-row>
 
       <b-row>
-        <div class="btn-group" data-toggle="buttons">
-          <label class="btn btn-primary">
-            <input type="radio" name="options" id="option1" autocomplete="off" checked>Squat
-          </label>
-          <label class="btn btn-primary">
-            <input type="radio" name="options" id="option2" autocomplete="off">Bench
-          </label>
-          <label class="btn btn-primary">
-            <input type="radio" name="options" id="option3" autocomplete="off">Press
-          </label>
-          <label class="btn btn-primary">
-            <input type="radio" name="options" id="option4" autocomplete="off">Deadlift
-          </label>
-        </div>
+        <b-form-radio-group id="lift-options"
+          buttons
+          v-model="selected_lift"
+          :options="lift_options"
+          name="lift-options" />
+        </b-form-group>
       </b-row> 
 
      <!--  <datalist id="rpevalues">
