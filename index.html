@@ -8,23 +8,27 @@
     .upsize {
       font-size: 20px;
     }
+    .row {
+      margin-right: 0px;
+      margin-left: 0px;
+    }
   </style>
 
 </head>
 
 <body>
   <div id="calculator">
-    <b-container fluid class="form">
+    <b-container>
       <b-row class="mb-4 mt-4">
         <b-col class="row justify-content-center">
           <h5>RPE Training Calculator</h5>
         </b-col>
       </b-row>
 
-      <b-row >
-        <b-col class="upsize row justify-content-left">Target Reps</b-col>
-        <b-col class="upsize row justify-content-center">=</b-col>
-        <b-col class="upsize row justify-content-left">{{ target_reps }}</b-col>
+      <b-row>
+        <b-col class="col-8 upsize row justify-content-left">Target Reps :</b-col>
+        <!-- <b-col class="col-3 upsize row justify-content-center">=</b-col> -->
+        <b-col class="col-4 upsize row justify-content-left">{{ target_reps }}</b-col>
       </b-row>
       <b-row>
         <b-col>
@@ -35,9 +39,9 @@
  
 
       <b-row>
-        <b-col class="upsize row justify-content-left">Target RPE</b-col>
-        <b-col class="upsize row justify-content-center">=</b-col>
-        <b-col class="upsize row justify-content-left">{{ target_rpe }}</b-col>
+        <b-col class="col-8 upsize row justify-content-left">Target RPE :</b-col>
+        <!-- <b-col class="upsize row justify-content-center">=</b-col> -->
+        <b-col class="col-4 upsize row justify-content-left">{{ target_rpe }}</b-col>
       </b-row>
       <b-row>
         <b-col>
@@ -47,9 +51,9 @@
       <br>
 
       <b-row>
-        <b-col class="upsize row justify-content-left">Actual Reps</b-col>
-        <b-col class="upsize row justify-content-center">=</b-col>
-        <b-col class="upsize row justify-content-left">{{ actual_reps }}</b-col>
+        <b-col class="col-8 upsize row justify-content-left">Actual Reps :</b-col>
+        <!-- <b-col class="upsize row justify-content-center">=</b-col> -->
+        <b-col class="col-4 upsize row justify-content-left">{{ actual_reps }}</b-col>
       </b-row>
       <b-row>
         <b-col>
@@ -59,9 +63,9 @@
       <br>
 
       <b-row>
-        <b-col class="upsize row justify-content-left">Actual RPE</b-col>
-        <b-col class="upsize row justify-content-center">=</b-col>
-        <b-col class="upsize row justify-content-left">{{ actual_rpe }}</b-col>
+        <b-col class="col-8 upsize row justify-content-left">Actual RPE :</b-col>
+        <!-- <b-col class="upsize row justify-content-center">=</b-col> -->
+        <b-col class="col-4 upsize row justify-content-left">{{ actual_rpe }}</b-col>
       </b-row>
       <b-row>
         <b-col>
