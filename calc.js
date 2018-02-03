@@ -8,7 +8,14 @@ window.onload = function () {
       actual_rpe: 0,
       actual_reps: 0,
       message: "",
-      rpe_values: [6, 7, 8, 8.5, 9, 9.5, 10]
+      rpe_values: [6, 7, 8, 8.5, 9, 9.5, 10],
+      selected_lift: '',
+      lift_options: [
+        { text: 'Squat', value: 'Squat' },
+        { text: 'Bench', value: 'Bench' },
+        { text: 'Press', value: 'Press'},
+        { text: 'Deadlift', value: 'Deadlift' }
+      ]
     },
     methods: {
       reset: function() {
@@ -49,5 +56,9 @@ window.onload = function () {
       }
     }
   });
+// set limits to backoff reduction
+// add buttons for which lift was done so absolute percentages can be applied
+// set whole numbers to end in .0 for rpe sliders
+// 
 
 }
