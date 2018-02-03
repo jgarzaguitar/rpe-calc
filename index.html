@@ -1,7 +1,14 @@
 <head>
 
-  <link type="text/css" rel="stylesheet" href="//unpkg.com/bootstrap/dist/css/bootstrap.min.css" />
-  <link type="text/css" rel="stylesheet" href="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.css" />
+  <link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap/dist/css/bootstrap.min.css" />
+  <link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <style>
+    .upsize {
+      font-size: 20px;
+    }
+  </style>
 
 </head>
 
@@ -9,38 +16,59 @@
   <div id="calculator">
     <b-container fluid class="form">
       <b-row class="mb-4 mt-4">
-        <b-col>
-          <h2>RPE Training Calculator</h2></b-col>
+        <b-col class="row justify-content-center">
+          <h5>RPE Training Calculator</h5>
+        </b-col>
       </b-row>
 
+      <b-row >
+        <b-col class="upsize row justify-content-left">Target Reps</b-col>
+        <b-col class="upsize row justify-content-center">=</b-col>
+        <b-col class="upsize row justify-content-left">{{ target_reps }}</b-col>
+      </b-row>
       <b-row>
-        <b-col> Target Reps</b-col>
         <b-col>
           <input class="form-control" v-model="target_reps" type="range" min="0" max="10" step="1">
         </b-col>
-        <b-col>{{ target_reps }}</b-col>
+      </b-row>
+      <br>
+ 
+
+      <b-row>
+        <b-col class="upsize row justify-content-left">Target RPE</b-col>
+        <b-col class="upsize row justify-content-center">=</b-col>
+        <b-col class="upsize row justify-content-left">{{ target_rpe }}</b-col>
       </b-row>
       <b-row>
-        <b-col>Target RPE</b-col>
         <b-col>
           <input class="form-control" v-model="target_rpe" type="range" min="6" max="10" step="0.5">
         </b-col>
-        <b-col>{{ target_rpe }}</b-col>
+      </b-row>
+      <br>
+
+      <b-row>
+        <b-col class="upsize row justify-content-left">Actual Reps</b-col>
+        <b-col class="upsize row justify-content-center">=</b-col>
+        <b-col class="upsize row justify-content-left">{{ actual_reps }}</b-col>
       </b-row>
       <b-row>
-        <b-col>Actual Reps</b-col>
         <b-col>
           <input class="form-control" v-model="actual_reps" type="range" min="0" max="10" step="1">
         </b-col>
-        <b-col>{{ actual_reps }}</b-col>
+      </b-row>
+      <br>
+
+      <b-row>
+        <b-col class="upsize row justify-content-left">Actual RPE</b-col>
+        <b-col class="upsize row justify-content-center">=</b-col>
+        <b-col class="upsize row justify-content-left">{{ actual_rpe }}</b-col>
       </b-row>
       <b-row>
-        <b-col>Actual RPE</b-col>
         <b-col>
           <input class="form-control" v-model="actual_rpe" type="range" min="6" max="10" step="0.5">
         </b-col>
-        <b-col>{{ actual_rpe }}</b-col>
       </b-row>
+
      <!--  <datalist id="rpevalues">
         <option v-for="rpe in rpe_values" v-bind:value="rpe" v-bind:label="rpe"></option>
       </datalist> -->
@@ -60,7 +88,7 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
-  <script src="//unpkg.com/babel-polyfill@latest/dist/polyfill.min.js"></script>
-  <script src="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.js"></script>
+  <script src="https://unpkg.com/babel-polyfill@latest/dist/polyfill.min.js"></script>
+  <script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.js"></script>
   <script src="calc.js"></script>
 </body>
