@@ -9,6 +9,7 @@ window.onload = function () {
       actual_reps: 1,
       message1: "",
       message2: "",
+      message3: "",
       rep_values: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],  
       rpe_values: [6, 7, 8, 8.5, 9, 9.5, 10],
       selected_lift: '',
@@ -32,6 +33,7 @@ window.onload = function () {
         this.actual_reps = 1
         this.message1 = ""
         this.message2 = ""
+        this.message3 = ""
         this.topset = ''
       },
       calcMistake: function() {
@@ -77,17 +79,26 @@ window.onload = function () {
         if (this.selected_lift === "Squat") {
           backoff_perc = 1 - (this.squat + modifier)
           backoff_perc_msg = backoff_perc * 100
-          this.message2 = "Updated backoff percentage: " + backoff_perc_msg + "%. Take " + parseInt(this.topset * backoff_perc) + " for your backoffs."
+          this.message2 = "Updated backoff percentage: " + backoff_perc_msg + "%."
+          if (this.topset != '') { 
+            this.message3 =  "Take " + parseInt(this.topset * backoff_perc) + " for your backoffs."
+            }   
         }
         else if (this.selected_lift === "Bench" | this.selected_lift === "Press") {
           backoff_perc = 1 - (this.bench + modifier)
           backoff_perc_msg = backoff_perc * 100
-          this.message2 = "Updated backoff percentage: " + backoff_perc_msg + "%. Take " + parseInt(this.topset * backoff_perc) + " for your backoffs."
+          this.message2 = "Updated backoff percentage: " + backoff_perc_msg + "%."
+          if (this.topset != '') { 
+            this.message3 =  "Take " + parseInt(this.topset * backoff_perc) + " for your backoffs."
+            } 
         }
         else if (this.selected_lift === "Deadlift") {
           backoff_perc = 1 - (this.deadlift + modifier)
           backoff_perc_msg = backoff_perc * 100
-          this.message2 = "Updated backoff percentage: " + backoff_perc_msg + "%. Take " + parseInt(this.topset * backoff_perc) + " for your backoffs."
+          this.message2 = "Updated backoff percentage: " + backoff_perc_msg + "%."
+          if (this.topset != '') { 
+            this.message3 =  "Take " + parseInt(this.topset * backoff_perc) + " for your backoffs."
+            } 
         }
       }
     },
