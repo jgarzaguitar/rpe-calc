@@ -32,6 +32,7 @@ window.onload = function () {
         this.actual_reps = 1
         this.message1 = ""
         this.message2 = ""
+        this.topset = ''
       },
       calcMistake: function() {
         var backoff_perc_diff = 0
