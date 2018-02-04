@@ -5,12 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <style>
+    #calculator {
+      font-family: 'Nobile', sans-serif;
+      font-weight: 300;
+    }
+    #lift-btn {
+      margin-top: 5px;
+      
+
+    }
+    #input-row {
+      margin-bottom: 5px;
+    }
     .upsize {
       font-size: 20px;
     }
     .row {
       margin-right: 0px;
       margin-left: 0px;
+      line-height: 1.2;
+    }
+    .btn-secondary:not(:disabled):not(.disabled).active {
+      color: #6c757d;
+      background-color: #fff;
+      border-color: #6c757d;
     }
     .btn-group {
       width: 100%;
@@ -37,11 +55,11 @@
     <b-container>
       <b-row class="mb-4 mt-4">
         <b-col class="row justify-content-center">
-          <h5>RPE Training Calculator</h5>
+          <h5>RPE backoff calculator</h5>
         </b-col>
       </b-row>
 
-      <b-row>
+      <b-row id="input-row">
         <b-col>
         <b-form-input class="row justify-content-left"
           v-model="topset"
@@ -116,14 +134,14 @@
         </b-form-group>
       </b-row>
 
-      <b-row>
+      <b-row id="lift-btn">
         <b-col class="col-8 upsize row justify-content-left">Lift :</b-col>
         <b-form-radio-group id="lift-options"
           buttons
           v-model ="selected_lift"
           :options="lift_options"
           name="lift-options" 
-          v-on:change="calcBackoff" />
+          v-on:click="calcBackoff" />
         </b-form-group>
       </b-row> 
 
@@ -133,10 +151,10 @@
     
       <b-row class="mt-3">
         <b-col>
-          <h4>{{message1}}</h4>
+          <h6>{{message1}}</h6>
         </b-col>
         <b-col>
-          <h4>{{message2}}</h4>
+          <h6>{{message2}}</h6>
         </b-col>
       </b-row>
     </b-container>

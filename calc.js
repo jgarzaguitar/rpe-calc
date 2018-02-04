@@ -27,9 +27,9 @@ window.onload = function () {
     methods: {
       reset: function() {
         this.target_rpe = 6
-        this.target_reps = 0
+        this.target_reps = 1
         this.actual_rpe = 6
-        this.actual_reps = 0
+        this.actual_reps = 1
         this.message = ""
       },
       calcMistake: function() {
@@ -75,17 +75,17 @@ window.onload = function () {
         if (this.selected_lift === "Squat") {
           backoff_perc = 1 - (this.squat + modifier)
           backoff_perc_msg = backoff_perc * 100
-          this.message2 = "Your updated backoff percentage is " + backoff_perc_msg + "%. Take " + this.topset * backoff_perc + " for your backoffs."
+          this.message2 = "Updated backoff percentage: " + backoff_perc_msg + "%. Take " + this.topset * backoff_perc + " for your backoffs."
         }
         else if (this.selected_lift === "Bench" | this.selected_lift === "Press") {
           backoff_perc = 1 - (this.bench + modifier)
           backoff_perc_msg = backoff_perc * 100
-          this.message2 = "Your updated backoff percentage is " + backoff_perc_msg + "%. Take " + this.topset * backoff_perc + " for your backoffs."
+          this.message2 = "Updated backoff percentage: " + backoff_perc_msg + "%. Take " + this.topset * backoff_perc + " for your backoffs."
         }
         else if (this.selected_lift === "Deadlift") {
           backoff_perc = 1 - (this.deadlift + modifier)
           backoff_perc_msg = backoff_perc * 100
-          this.message2 = "Your updated backoff percentage is " + backoff_perc_msg + "%. Take " + this.topset * backoff_perc + " for your backoffs."
+          this.message2 = "Updated backoff percentage: " + backoff_perc_msg + "%. Take " + this.topset * backoff_perc + " for your backoffs."
         }
       }
     },
