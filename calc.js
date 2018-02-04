@@ -4,12 +4,12 @@ window.onload = function () {
     el: '#calculator',
     data: {
       target_rpe: 6,
-      target_reps: 0,
+      target_reps: 1,
       actual_rpe: 6,
-      actual_reps: 0,
+      actual_reps: 1,
       message1: "",
       message2: "",
-      rep_values: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+      rep_values: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],  
       rpe_values: [6, 7, 8, 8.5, 9, 9.5, 10],
       selected_lift: '',
       lift_options: [

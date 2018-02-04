@@ -20,6 +20,7 @@
     }
     #lift-options {
       width: 100%;
+      margin: .5px;
     }
     #lift-options .btn {
       margin: .5px;
@@ -42,10 +43,10 @@
 
       <b-row>
         <b-col>
-        <b-form-input 
+        <b-form-input class="row justify-content-left"
           v-model="topset"
           type="tel"
-          placeholder="Enter your topset.">
+          placeholder="Enter topset.">
         </b-form-input>
         </b-col>
         <b-col>
@@ -59,9 +60,10 @@
         <b-col class="col-4 upsize row justify-content-left">{{ target_reps }}</b-col>
       </b-row>
       <b-row>
-        <b-form-radio-group id="rep_values"
+        <b-form-radio-group class="" id="lift-options"
           buttons
           v-model ="target_reps"
+          size="sm"
           :options="rep_values"
           name="rep-values"  />
         </b-form-group>
@@ -75,7 +77,7 @@
         <b-col class="col-4 upsize row justify-content-left">{{ target_rpe }}</b-col>
       </b-row>
       <b-row>
-        <b-form-radio-group id="lift-options"
+        <b-form-radio-group class="col-14" id="lift-options"
           buttons
           v-model ="target_rpe"
           :options="rpe_values"
@@ -90,9 +92,10 @@
         <b-col class="col-4 upsize row justify-content-left">{{ actual_reps }}</b-col>
       </b-row>
       <b-row>
-        <b-form-radio-group id="rep_values"
+        <b-form-radio-group id="lift-options"
           buttons
           v-model ="actual_reps"
+          size="sm"
           :options="rep_values"
           name="rep-values"  />
         </b-form-group>
@@ -105,7 +108,7 @@
         <b-col class="col-4 upsize row justify-content-left">{{ actual_rpe }}</b-col>
       </b-row>
       <b-row>
-        <b-form-radio-group id="rpe_values"
+        <b-form-radio-group id="lift-options"
           buttons
           v-model ="actual_rpe"
           :options="rpe_values"
