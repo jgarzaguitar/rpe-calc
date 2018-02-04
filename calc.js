@@ -59,14 +59,14 @@ window.onload = function () {
           return backoff_perc_diff
         }
         // undershot
-        else if (actual_rpe < target_rpe) {
+        else if (actual_rpe < target_rpe && actual_reps === target_reps) {
           backoff_sets_diff = 1
           backoff_perc_diff_msg = backoff_perc_diff * 100
           this.message1 = "You undershot your RPE."
           return backoff_perc_diff
         } 
         else {
-          this.message1 = "What are you doing? Talk to Josh."
+          this.message1 = "Invalid input."
         }
       },
       calcBackoff: function() {
@@ -75,17 +75,17 @@ window.onload = function () {
         if (this.selected_lift === "Squat") {
           backoff_perc = 1 - (this.squat + modifier)
           backoff_perc_msg = backoff_perc * 100
-          this.message2 = "Updated backoff percentage: " + backoff_perc_msg + "%. Take " + this.topset * backoff_perc + " for your backoffs."
+          this.message2 = "Updated backoff percentage: " + backoff_perc_msg + "%. Take " + parseInt(this.topset * backoff_perc) + " for your backoffs."
         }
         else if (this.selected_lift === "Bench" | this.selected_lift === "Press") {
           backoff_perc = 1 - (this.bench + modifier)
           backoff_perc_msg = backoff_perc * 100
-          this.message2 = "Updated backoff percentage: " + backoff_perc_msg + "%. Take " + this.topset * backoff_perc + " for your backoffs."
+          this.message2 = "Updated backoff percentage: " + backoff_perc_msg + "%. Take " + parseInt(this.topset * backoff_perc) + " for your backoffs."
         }
         else if (this.selected_lift === "Deadlift") {
           backoff_perc = 1 - (this.deadlift + modifier)
           backoff_perc_msg = backoff_perc * 100
-          this.message2 = "Updated backoff percentage: " + backoff_perc_msg + "%. Take " + this.topset * backoff_perc + " for your backoffs."
+          this.message2 = "Updated backoff percentage: " + backoff_perc_msg + "%. Take " + parseInt(this.topset * backoff_perc) + " for your backoffs."
         }
       }
     },
