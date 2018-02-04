@@ -12,6 +12,9 @@
       margin-right: 0px;
       margin-left: 0px;
     }
+    .btn-group {
+      width: 100%;
+    }
     [type='radio'] {
       display: none; 
     }
@@ -56,9 +59,12 @@
         <b-col class="col-4 upsize row justify-content-left">{{ target_reps }}</b-col>
       </b-row>
       <b-row>
-        <b-col>
-          <input class="form-control" v-model="target_reps" type="range" min="0" max="10" step="1">
-        </b-col>
+        <b-form-radio-group id="rep_values"
+          buttons
+          v-model ="actual_reps"
+          :options="rep_values"
+          name="rep-values"  />
+        </b-form-group>
       </b-row>
       <br>
  
@@ -69,9 +75,12 @@
         <b-col class="col-4 upsize row justify-content-left">{{ target_rpe }}</b-col>
       </b-row>
       <b-row>
-        <b-col>
-          <input class="form-control" v-model="target_rpe" type="range" min="6" max="10" step="0.5">
-        </b-col>
+        <b-form-radio-group id="lift-options"
+          buttons
+          v-model ="target_rpe"
+          :options="rpe_values"
+          name="rpe-values"  />
+        </b-form-group>
       </b-row>
       <br>
 
@@ -81,9 +90,12 @@
         <b-col class="col-4 upsize row justify-content-left">{{ actual_reps }}</b-col>
       </b-row>
       <b-row>
-        <b-col>
-          <input class="form-control" v-model="actual_reps" type="range" min="0" max="10" step="1">
-        </b-col>
+        <b-form-radio-group id="rep_values"
+          buttons
+          v-model ="actual_reps"
+          :options="rep_values"
+          name="rep-values"  />
+        </b-form-group>
       </b-row>
       <br>
 
@@ -93,12 +105,16 @@
         <b-col class="col-4 upsize row justify-content-left">{{ actual_rpe }}</b-col>
       </b-row>
       <b-row>
-        <b-col>
-          <input class="form-control" v-model="actual_rpe" type="range" min="6" max="10" step="0.5">
-        </b-col>
+        <b-form-radio-group id="rpe_values"
+          buttons
+          v-model ="actual_rpe"
+          :options="rpe_values"
+          name="rpe-values"  />
+        </b-form-group>
       </b-row>
 
       <b-row>
+        <b-col class="col-8 upsize row justify-content-left">Lift :</b-col>
         <b-form-radio-group id="lift-options"
           buttons
           v-model ="selected_lift"

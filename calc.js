@@ -9,6 +9,7 @@ window.onload = function () {
       actual_reps: 0,
       message1: "",
       message2: "",
+      rep_values: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
       rpe_values: [6, 7, 8, 8.5, 9, 9.5, 10],
       selected_lift: '',
       lift_options: [
@@ -92,21 +93,15 @@ window.onload = function () {
       selected_lift: 'calcBackoff'
     }
   });
+
 // set limits to backoff reduction
-// update percentages when lift is selected
 // display default backoff percentage somewhere
 // make default backoff percentage editable
-// print absolute weight change based on top set input
 // dump all data into local storage
 // when app loads, load local storage
 // fix rpe input to only show specific rpe values i want
 // on:change for lifts only works when it's changed. should be able to update when clicked again, 
 //    or re-render when any changes to inputs happen
-
-
-// refactor code
-// -calc_mistake handles edge cases  and returns backoff_perc_diff
-// -calc_backoff calls calc_mistake and adds it's returned value to the default lift based backoff
 
 
 }
