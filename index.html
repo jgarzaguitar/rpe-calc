@@ -57,23 +57,23 @@
   <div id="calculator">
     <b-container>
 
-<!-- title row-->
+<!-- title row and display settings (currently off)-->
       <b-row class="mb-4 mt-4">
        <!-- title -->
-        <b-col>
+        <b-col class="col-12 row justify-content-center">
           <h2>RPE Backoff Calculator</h2>
         </b-col>
 
         <!-- settings button -->
-        <b-col class="col-3">
+        <!-- <b-col class="col-3">
             <b-button size="sm" color="purple" dark v-on:click="showModal=true">
                   <v-icon>fas fa-sliders-h</v-icon>
             </b-button>
           <my-modal v-show="showModal" :squat="squat" :press="press" :bench="bench" :deadlift="deadlift" @close="showModal=false"></my-modal>
-        </b-col>
+        </b-col> -->
       </b-row>
 
-<!-- input row: select a lift, input form for topset, display settings button -->
+<!-- input row: select a lift, input form for topset-->
       <b-row id="input-row">
         
         <!-- select a lift -->
