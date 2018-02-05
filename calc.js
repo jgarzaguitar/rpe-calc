@@ -39,9 +39,9 @@ window.onload = function () {
       message3: "",
       rep_values: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],  
       rpe_values: [6, 7, 8, 8.5, 9, 9.5, 10],
-      selected_lift: '',
+      selected_lift: 'Squat',
       lift_options: [
-        { text: 'Please select a lift', value: null},
+        // { text: 'Please select a lift', value: null},
         { text: 'Squat', value: 'Squat' },
         { text: 'Bench', value: 'Bench' },
         { text: 'Press', value: 'Press'},
@@ -110,7 +110,10 @@ window.onload = function () {
       calcBackoff: function() {
         modifier = this.calcMistake()
         // squat
-        if (this.selected_lift === "Squat") {
+        if (this.message1 === "You undershot your RPE. Keep looking.") {
+          return
+        }
+        else if (this.selected_lift === "Squat") {
           backoff_perc = 1 - (this.squat + modifier)
           backoff_perc_msg = backoff_perc * 100
           this.message2 = "Updated backoff percentage: " + backoff_perc_msg + "%."
@@ -138,8 +141,6 @@ window.onload = function () {
         }
       }
     },
-// when selected_lift changes, call calcBackoff
-// I think this is where my bug is
     watch: {
       // selected_lift: 'calcBackoff'
     }
