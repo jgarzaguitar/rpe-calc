@@ -61,7 +61,7 @@
       <b-row class="mb-4 mt-4">
        <!-- title -->
         <b-col>
-          <h2>RPE backoff calculator</h2>
+          <h2>RPE Backoff Calculator</h2>
         </b-col>
 
         <!-- settings button -->
@@ -101,6 +101,13 @@
         <!-- <b-col class="col-4 upsize row justify-content-left">{{ target_reps }}</b-col> -->
       </b-row>
       <b-row>
+        <!-- <v-app>
+          <v-card dark>
+              <v-card-text>
+                <v-slider dark v-model="target_reps" thumb-label step="10" ticks></v-slider>
+              </v-card-text>
+          </v-card>
+        </v-app> -->
         <b-form-radio-group class="" id="lift-options"
           buttons
           v-model ="target_reps"

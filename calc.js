@@ -98,7 +98,7 @@ window.onload = function () {
         else if (actual_rpe < target_rpe && actual_reps === target_reps) {
           backoff_sets_diff = 1
           backoff_perc_diff_msg = backoff_perc_diff * 100
-          this.message1 = "You undershot your RPE."
+          this.message1 = "You undershot your RPE. Keep looking."
           return backoff_perc_diff
         } 
         // if actual reps exceeds target reps
