@@ -56,40 +56,66 @@
 <body>
   <div id="calculator">
     <b-container>
+
+<!-- title row-->
       <b-row class="mb-4 mt-4">
         <b-col class="row justify-content-center">
           <h5>RPE backoff calculator</h5>
         </b-col>
-      </b-row>
 
-      <b-row id="input-row">
-        <b-col>
-        <b-form-input class="row justify-content-left"
-          v-model="topset"
-          type="tel"
-          placeholder="Enter topset.">
-        </b-form-input>
-        </b-col>
-        <b-col class="col-2"> 
-          <b-button v-on:click="reset">
-            <v-icon>fas fa-eraser</v-icon>
-          </b-button>
-        </b-col>
+        <!-- settings button -->
         <b-col class="col-3">
-          <!-- <b-button class="button" @click="showModal=true"> -->
             <b-button color="purple" dark v-on:click="showModal=true">
                   <v-icon>fas fa-sliders-h</v-icon>
             </b-button>
-            <!-- <my-modal :squat="squat"></my-modal> -->
-          <!-- </b-button> -->
           <my-modal v-show="showModal" :squat="squat" :press="press" :bench="bench" :deadlift="deadlift" @close="showModal=false"></my-modal>
         </b-col>
       </b-row>
 
+<!-- input row: select a lift, input form for topset, display settings button -->
+      <b-row id="input-row">
+        <!-- select a lift -->
+
+        <!-- <b-row id="lift-btn">
+                <b-col class="col-8 upsize row justify-content-left">Lift :</b-col>
+                <b-form-radio-group id="lift-options"
+                  buttons
+                  v-model ="selected_lift"
+                  :options="lift_options"
+                  name="lift-options"  />
+                </b-form-group>
+              </b-row> 
+        <b-col> -->
+
+          <b-dropdown 
+            id="lift-btn" 
+            text="Select a Lift" 
+            class="m-2">
+            <b-form-radio-group id="lift-options"
+                  buttons
+                  v-model ="selected_lift"
+                  :options="lift_options"
+                  name="lift-options"  />
+                </b-form-group>
+          </b-dropdown>
+        </b-col>
+
+        <!-- enter topset -->
+        <b-col>
+          <b-form-input class="row justify-content-left"
+            v-model="topset"
+            type="tel"
+            placeholder="Enter topset.">
+          </b-form-input>
+        </b-col>
+
+      </b-row>
+
+<!-- target reps buttons -->
       <b-row>
         <b-col class="col-8 upsize row justify-content-left">Target Reps :</b-col>
         <!-- <b-col class="col-3 upsize row justify-content-center">=</b-col> -->
-        <b-col class="col-4 upsize row justify-content-left">{{ target_reps }}</b-col>
+        <!-- <b-col class="col-4 upsize row justify-content-left">{{ target_reps }}</b-col> -->
       </b-row>
       <b-row>
         <b-form-radio-group class="" id="lift-options"
@@ -102,11 +128,11 @@
       </b-row>
       <br>
  
-
+<!-- target RPE buttons -->
       <b-row>
         <b-col class="col-8 upsize row justify-content-left">Target RPE :</b-col>
         <!-- <b-col class="upsize row justify-content-center">=</b-col> -->
-        <b-col class="col-4 upsize row justify-content-left">{{ target_rpe }}</b-col>
+        <!-- <b-col class="col-4 upsize row justify-content-left">{{ target_rpe }}</b-col> -->
       </b-row>
       <b-row>
         <b-form-radio-group class="col-14" id="lift-options"
@@ -118,10 +144,11 @@
       </b-row>
       <br>
 
+<!-- actual reps buttons -->
       <b-row>
         <b-col class="col-8 upsize row justify-content-left">Actual Reps :</b-col>
         <!-- <b-col class="upsize row justify-content-center">=</b-col> -->
-        <b-col class="col-4 upsize row justify-content-left">{{ actual_reps }}</b-col>
+        <!-- <b-col class="col-4 upsize row justify-content-left">{{ actual_reps }}</b-col> -->
       </b-row>
       <b-row>
         <b-form-radio-group id="lift-options"
@@ -134,10 +161,11 @@
       </b-row>
       <br>
 
+<!-- select actual RPE buttons -->
       <b-row>
         <b-col class="col-8 upsize row justify-content-left">Actual RPE :</b-col>
         <!-- <b-col class="upsize row justify-content-center">=</b-col> -->
-        <b-col class="col-4 upsize row justify-content-left">{{ actual_rpe }}</b-col>
+        <!-- <b-col class="col-4 upsize row justify-content-left">{{ actual_rpe }}</b-col> -->
       </b-row>
       <b-row>
         <b-form-radio-group id="lift-options"
@@ -148,20 +176,22 @@
         </b-form-group>
       </b-row>
 
-      <b-row id="lift-btn">
-        <b-col class="col-8 upsize row justify-content-left">Lift :</b-col>
-        <b-form-radio-group id="lift-options"
-          buttons
-          v-model ="selected_lift"
-          :options="lift_options"
-          name="lift-options"  />
-        </b-form-group>
-      </b-row> 
+      <b-row class="mt-3">
+        <b-col> 
+          <b-button v-on:click="calcBackoff">
+            Calculate
+          </b-button>
+        </b-col>
 
-     <!--  <datalist id="rpevalues">
-        <option v-for="rpe in rpe_values" v-bind:value="rpe" v-bind:label="rpe"></option>
-      </datalist> -->
+        <!-- reset button -->
+        <b-col> 
+          <b-button v-on:click="reset">
+            Reset
+          </b-button>
+        </b-col>
+      </b-row>
     
+<!-- display calcBackoff results -->
       <b-row class="mt-3">
         <b-col>
           <b-alert show variant="light">

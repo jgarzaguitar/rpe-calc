@@ -1,5 +1,6 @@
 window.onload = function () {
 
+// settings
   Vue.component('my-modal', {
     template: `
       <div class="modal is-active">
@@ -24,8 +25,10 @@ window.onload = function () {
       ['squat', 'press', 'bench', 'deadlift']
   })
   
+// calculator, reset function, currently parent component, stores all data
   var rpe_calculator = new Vue({
     el: '#calculator',
+// all the apps data
     data: {
       target_rpe: 6,
       target_reps: 1,
@@ -51,6 +54,7 @@ window.onload = function () {
       showModal: false
     },
     methods: {
+// resets all user defined data to default values
       reset: function() {
         this.target_rpe = 6
         this.target_reps = 1
@@ -62,6 +66,7 @@ window.onload = function () {
         this.message3 = ""
         this.topset = ''
       },
+// calculates modifier based on type and number of mistakes
       calcMistake: function() {
         var backoff_perc_diff = 0
         var backoff_sets_diff = 0
@@ -69,7 +74,7 @@ window.onload = function () {
         var target_reps = parseInt(this.target_reps)
         var actual_rpe = parseFloat(this.actual_rpe)
         var actual_reps = parseInt(this.actual_reps)
-          //Success
+        // Success
         if (actual_rpe === target_rpe && actual_reps === target_reps) {
           this.message1 = "Nice job! Move on to your backoff sets"
           return backoff_perc_diff
@@ -95,13 +100,15 @@ window.onload = function () {
           this.message1 = "You undershot your RPE."
           return backoff_perc_diff
         } 
+        // if actual reps exceeds target reps
         else {
           this.message1 = "Invalid input."
         }
       },
+// determines lift, adds modifier from calcMistake, prints final perc and absolute value
       calcBackoff: function() {
         modifier = this.calcMistake()
-
+        // squat
         if (this.selected_lift === "Squat") {
           backoff_perc = 1 - (this.squat + modifier)
           backoff_perc_msg = backoff_perc * 100
@@ -110,6 +117,7 @@ window.onload = function () {
             this.message3 =  "Take " + parseInt(this.topset * backoff_perc) + " for your backoffs."
             }   
         }
+        // bench and press
         else if (this.selected_lift === "Bench" | this.selected_lift === "Press") {
           backoff_perc = 1 - (this.bench + modifier)
           backoff_perc_msg = backoff_perc * 100
@@ -118,6 +126,7 @@ window.onload = function () {
             this.message3 =  "Take " + parseInt(this.topset * backoff_perc) + " for your backoffs."
             } 
         }
+        // deadlift
         else if (this.selected_lift === "Deadlift") {
           backoff_perc = 1 - (this.deadlift + modifier)
           backoff_perc_msg = backoff_perc * 100
@@ -128,8 +137,10 @@ window.onload = function () {
         }
       }
     },
+// when selected_lift changes, call calcBackoff
+// I think this is where my bug is
     watch: {
-      selected_lift: 'calcBackoff'
+      // selected_lift: 'calcBackoff'
     }
   });
 
@@ -140,6 +151,11 @@ window.onload = function () {
 //    or re-render when any changes to inputs happen
 // allow modal component to perform edits to percentages
 // fix bug where reset must be called twice to remove message1
+
+// i would change the flow so you might put that dropdown selector at the top
+// then have them select the rpe, reps, etc. 
+// then maybe do a "calculate" button
+// then maybe do a "clear" button right next to it
 
 
 }
