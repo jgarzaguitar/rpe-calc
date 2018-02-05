@@ -35,6 +35,7 @@ window.onload = function () {
         this.message2 = ""
         this.message3 = ""
         this.topset = ''
+        this.selected_lift = ''
       },
       calcMistake: function() {
         var backoff_perc_diff = 0
