@@ -56,11 +56,11 @@ window.onload = function () {
         this.target_reps = 1
         this.actual_rpe = 6
         this.actual_reps = 1
+        this.selected_lift = ''
         this.message1 = ""
         this.message2 = ""
         this.message3 = ""
         this.topset = ''
-        this.selected_lift = ''
       },
       calcMistake: function() {
         var backoff_perc_diff = 0
@@ -138,7 +138,8 @@ window.onload = function () {
 // when app loads, load local storage
 // on:change for lifts only works when it's changed. should be able to update when clicked again, 
 //    or re-render when any changes to inputs happen
-// add modal component to display default backoff percentage and allow edits to percentages
+// allow modal component to perform edits to percentages
+// fix bug where reset must be called twice to remove message1
 
 
 }
