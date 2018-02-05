@@ -60,12 +60,12 @@
 <!-- title row-->
       <b-row class="mb-4 mt-4">
         <b-col class="row justify-content-center">
-          <h5>RPE backoff calculator</h5>
+          <h1>RPE backoff calculator</h1>
         </b-col>
 
         <!-- settings button -->
         <b-col class="col-3">
-            <b-button color="purple" dark v-on:click="showModal=true">
+            <b-button size="sm" color="purple" dark v-on:click="showModal=true">
                   <v-icon>fas fa-sliders-h</v-icon>
             </b-button>
           <my-modal v-show="showModal" :squat="squat" :press="press" :bench="bench" :deadlift="deadlift" @close="showModal=false"></my-modal>
@@ -75,33 +75,14 @@
 <!-- input row: select a lift, input form for topset, display settings button -->
       <b-row id="input-row">
         <!-- select a lift -->
-
-        <!-- <b-row id="lift-btn">
-                <b-col class="col-8 upsize row justify-content-left">Lift :</b-col>
-                <b-form-radio-group id="lift-options"
-                  buttons
-                  v-model ="selected_lift"
-                  :options="lift_options"
-                  name="lift-options"  />
-                </b-form-group>
-              </b-row> 
-        <b-col> -->
-
-          <b-dropdown 
-            id="lift-btn" 
-            text="Select a Lift" 
-            class="m-2">
-            <b-form-radio-group id="lift-options"
-                  buttons
-                  v-model ="selected_lift"
-                  :options="lift_options"
-                  name="lift-options"  />
-                </b-form-group>
-          </b-dropdown>
+        <b-col>
+          Select a lift
+          <b-form-select v-model="selected_lift" :options="lift_options" class="mb-3" />
         </b-col>
 
         <!-- enter topset -->
         <b-col>
+          Enter your topset
           <b-form-input class="row justify-content-left"
             v-model="topset"
             type="tel"
@@ -177,16 +158,16 @@
       </b-row>
 
       <b-row class="mt-3">
-        <b-col> 
+        <b-col class="col-8"> 
           <b-button v-on:click="calcBackoff">
             Calculate
           </b-button>
         </b-col>
 
         <!-- reset button -->
-        <b-col> 
+        <b-col class="col-4"> 
           <b-button v-on:click="reset">
-            Reset
+            Clear
           </b-button>
         </b-col>
       </b-row>
