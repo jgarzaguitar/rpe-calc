@@ -41,6 +41,7 @@ window.onload = function () {
       rpe_values: [6, 7, 8, 8.5, 9, 9.5, 10],
       selected_lift: '',
       lift_options: [
+        { text: 'Please select a lift', value: null},
         { text: 'Squat', value: 'Squat' },
         { text: 'Bench', value: 'Bench' },
         { text: 'Press', value: 'Press'},
