@@ -1,4 +1,28 @@
 window.onload = function () {
+
+  Vue.component('my-modal', {
+    template: `
+      <div class="modal is-active">
+        <div class="modal-background"></div>
+        <div class="modal-content">
+          <div class="box">
+            <h3>
+              Default multipliers
+            </h3>
+
+              <p>Squat: {{ squat }}</p> 
+              <p>Press: {{ press }}</p>
+              <p>Bench: {{ bench }}</p>
+              <p>Deadlift: {{ deadlift }}</p>
+          </div>
+          <!-- Any other Bulma elements you want -->
+        </div>
+        <button class="modal-close is-large" @click="$emit('close')" aria-label="close"></button>
+      </div>
+    `,
+    props: 
+      ['squat', 'press', 'bench', 'deadlift']
+  })
   
   var rpe_calculator = new Vue({
     el: '#calculator',
@@ -24,6 +48,7 @@ window.onload = function () {
       press: .04,
       bench: .04,
       deadlift: .1,
+      showModal: false
     },
     methods: {
       reset: function() {
@@ -109,12 +134,11 @@ window.onload = function () {
   });
 
 // set limits to backoff reduction
-// display default backoff percentage somewhere
-// make default backoff percentage editable
 // dump all data into local storage
 // when app loads, load local storage
 // on:change for lifts only works when it's changed. should be able to update when clicked again, 
 //    or re-render when any changes to inputs happen
+// add modal component to display default backoff percentage and allow edits to percentages
 
 
 }

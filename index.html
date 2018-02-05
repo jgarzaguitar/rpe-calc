@@ -2,6 +2,8 @@
 
   <link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap/dist/css/bootstrap.min.css" />
   <link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+  <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <style>
@@ -69,6 +71,15 @@
         </b-col>
         <b-col>
           <b-button v-on:click="reset">Reset</b-button>
+        </b-col>
+        <b-col>
+          <!-- <b-button class="button" @click="showModal=true"> -->
+            <v-btn color="purple" dark @click="showModal=true">
+                  <v-icon dark>build</v-icon>
+            </v-btn>
+            <!-- <my-modal :squat="squat"></my-modal> -->
+          <!-- </b-button> -->
+          <my-modal v-show="showModal" :squat="squat" :press="press" :bench="bench" :deadlift="deadlift" @close="showModal=false"></my-modal>
         </b-col>
       </b-row>
 
@@ -163,5 +174,6 @@
   <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
   <script src="https://unpkg.com/babel-polyfill@latest/dist/polyfill.min.js"></script>
   <script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.js"></script>
+  <script src="https://unpkg.com/vuetify/dist/vuetify.js"></script>
   <script src="calc.js"></script>
 </body>
