@@ -74,9 +74,9 @@
         </b-col>
         <b-col>
           <!-- <b-button class="button" @click="showModal=true"> -->
-            <v-btn color="purple" dark v-on:click="showModal=true">
+            <b-button color="purple" dark v-on:click="showModal=true">
                   <v-icon dark>build</v-icon>
-            </v-btn>
+            </b-button>
             <!-- <my-modal :squat="squat"></my-modal> -->
           <!-- </b-button> -->
           <my-modal v-show="showModal" :squat="squat" :press="press" :bench="bench" :deadlift="deadlift" @close="showModal=false"></my-modal>
