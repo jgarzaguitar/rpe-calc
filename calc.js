@@ -61,7 +61,6 @@ window.onload = function () {
         this.target_reps = 1
         this.actual_rpe = 6
         this.actual_reps = 1
-        this.selected_lift = ''
         this.message1 = ""
         this.message2 = ""
         this.message3 = ""
