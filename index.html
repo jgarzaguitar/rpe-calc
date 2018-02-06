@@ -2,20 +2,25 @@
 
   <link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap/dist/css/bootstrap.min.css" />
   <link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css"> -->
   <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
   <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <style>
+    body {
+      background-color: #E1E2E1;
+    }
+    .alert-light {
+      background-color: #E1E2E1;
+      border-color: #E1E2E1;
+    }
     #calculator {
       font-family: 'Nobile', sans-serif;
       font-weight: 300;
     }
     #lift-btn {
       margin-top: 5px;
-      
-
     }
     #input-row {
       margin-bottom: 5px;
@@ -45,9 +50,16 @@
     }
     #lift-options .btn {
       margin: .5px;
+      background-color: #212121;
     }
     label.btn {
       width: 25%;
+    }
+    .navbar {
+      background-color: #212121;
+    }
+    .navbar-light .navbar-brand {
+      color: #ffffff;
     }
   </style>
 
@@ -58,11 +70,15 @@
     <b-container>
 
 <!-- title row and display settings (currently off)-->
-      <b-row class="mb-4 mt-4">
+      <!-- <b-row class="mb-4 mt-4" > -->
        <!-- title -->
-        <b-col class="col-12 row justify-content-center">
+       <!--  <b-col class="col-12 row justify-content-center" >
           <h2>RPE Backoff Calculator</h2>
-        </b-col>
+        </b-col> -->
+
+        <b-navbar variant="faded" type="light" class="row justify-content-center">
+            <b-navbar-brand tag="h1" class="mb-0">RPE BACKOFF CALCULATOR</b-navbar-brand>
+        </b-navbar>
 
         <!-- settings button -->
         <!-- <b-col class="col-3">
@@ -74,21 +90,22 @@
       </b-row>
 
 <!-- input row: select a lift, input form for topset-->
-      <b-row id="input-row">
+      <b-row id="input-row" class="m-3">
         
         <!-- select a lift -->
         <b-col>
-          Select a lift
+          SELECT A LIFT
           <b-form-select v-model="selected_lift" :options="lift_options" class="mb-3" />
         </b-col>
 
         <!-- enter topset -->
         <b-col>
-          Enter your top set
+          ENTER WEIGHT
           <b-form-input class="row justify-content-left"
+            required
             v-model="topset"
             type="tel"
-            placeholder="Enter top set.">
+            placeholder="Enter weight.">
           </b-form-input>
         </b-col>
 
